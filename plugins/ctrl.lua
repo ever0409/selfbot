@@ -93,6 +93,9 @@ end
 		receiver = get_receiver(msg)
 		reload_plugins(true)
 		post_msg(receiver, "Reloaded!", ok_cb, false)
+		local hash = 'group:'..msg.to.id  
+		local group_lang = redis:hget(hash,'lang')  
+		if group_lang then
 		return "تمام پلاگین ها لود شدند"
 	else
 		return "All Plugins Loaded"
