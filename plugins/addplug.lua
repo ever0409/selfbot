@@ -11,6 +11,9 @@ local function run(msg, matches)
   file:write(text)
   file:flush()
   file:close()
+  local hash = 'group:'..msg.to.id  
+  local group_lang = redis:hget(hash,'lang')  
+  if group_lang then
   return "پلاگین|"..name.."|با موفقیت نصب شد"
 else
   return "Plugin|"..name.."|Installed"
